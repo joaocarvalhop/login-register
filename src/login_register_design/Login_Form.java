@@ -8,7 +8,13 @@ package login_register_design;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,6 +31,7 @@ public class Login_Form extends javax.swing.JFrame {
         /* abrir o XAMPP e dar start no Apache e MySQL */
         /* ir até -> http://localhost/phpadmin/ e criar um novo banco de dados*/
         /* criar uma conexão com o banco de dados */
+        /* para acessar sem se registrar use o username:test e a senha:123 */
         
         // centro do Form
         this.setLocationRelativeTo(null);
@@ -423,7 +430,45 @@ public class Login_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFieldFocusLost
 
     private void jButton_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_loginActionPerformed
-        // TODO add your handling code here:
+        
+        PreparedStatement st;
+        ResultSet rs;
+        
+        // pega o usuário e senha
+        String username = jTextField_Username.getText();
+        String senha   = String.valueOf(jPasswordField.getPassword());
+        
+        // criar uma query de select que verifique se o username
+        // e a senha existem no banco de dados
+        String query = "SELECT * FROM `usuarios` WHERE `username` = ? AND `senha` = ?";
+        
+        try {
+            st = My_CNX.getConnection().prepareStatement(query);
+            
+            st.setString(1, username);
+            st.setString(2, senha);
+            rs = st.executeQuery();
+            
+            if(rs.next()){
+                // mostra a nova forma
+                Menu_Form form = new Menu_Form();
+                form.setVisible(true);
+                form.pack();
+                form.setLocationRelativeTo(null);
+                
+                // fecha o form atual, no caso Login_form
+                this.dispose();
+                
+            } else{
+                // mensagem de erro
+                JOptionPane.showMessageDialog(null, "Usuário/Senha Inválido!", "Erro de Login", 2);
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Login_Form.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton_loginActionPerformed
 
     private void jButton_loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_loginMouseEntered
