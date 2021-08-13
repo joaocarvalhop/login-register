@@ -68,7 +68,6 @@ public class Register_Form extends javax.swing.JFrame {
         jTextField_Username = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField_2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField_Phone = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -78,6 +77,7 @@ public class Register_Form extends javax.swing.JFrame {
         jButton_SelectImage = new javax.swing.JButton();
         jLabel_ImagePath = new javax.swing.JLabel();
         jPasswordField_1 = new javax.swing.JPasswordField();
+        jPasswordField_2 = new javax.swing.JPasswordField();
         jLabel_minimize = new javax.swing.JLabel();
         jLabel_close = new javax.swing.JLabel();
         jPanel_title = new javax.swing.JPanel();
@@ -141,10 +141,6 @@ public class Register_Form extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Confirme a Senha:");
 
-        jTextField_2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField_2.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
-        jTextField_2.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel6.setBackground(new java.awt.Color(187, 187, 187));
         jLabel6.setFont(new java.awt.Font("Nunito", 0, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -190,13 +186,17 @@ public class Register_Form extends javax.swing.JFrame {
         });
 
         jLabel_ImagePath.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel_ImagePath.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        jLabel_ImagePath.setFont(new java.awt.Font("Nunito", 0, 9)); // NOI18N
         jLabel_ImagePath.setForeground(new java.awt.Color(0, 0, 0));
         jLabel_ImagePath.setText("image path");
 
         jPasswordField_1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField_1.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
         jPasswordField_1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jPasswordField_2.setBackground(new java.awt.Color(255, 255, 255));
+        jPasswordField_2.setFont(new java.awt.Font("Nunito", 0, 12)); // NOI18N
+        jPasswordField_2.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -227,7 +227,7 @@ public class Register_Form extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jButton_SelectImage, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel_ImagePath))
+                                .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jTextField_Phone, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jRadioButton_male)
@@ -237,8 +237,8 @@ public class Register_Form extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_2)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(jPasswordField_2)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,10 +272,10 @@ public class Register_Form extends javax.swing.JFrame {
                         .addGap(1, 1, 1)
                         .addComponent(jPasswordField_1, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                    .addComponent(jPasswordField_2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
                 .addComponent(jButton_Register, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -322,10 +322,9 @@ public class Register_Form extends javax.swing.JFrame {
         jPanel_title.setLayout(jPanel_titleLayout);
         jPanel_titleLayout.setHorizontalGroup(
             jPanel_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_titleLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+            .addGroup(jPanel_titleLayout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18))
+                .addGap(0, 46, Short.MAX_VALUE))
         );
         jPanel_titleLayout.setVerticalGroup(
             jPanel_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,9 +487,41 @@ public class Register_Form extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton_SelectImageActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    // criar uma função que verifique campos/fields vazios
+    public boolean VerifyFields (){
+        
+        String fname = jTextField_FullName.getText();
+        String uname = jTextField_Username.getText();
+        String phone = jTextField_Phone.getText();
+        String pass1 = String.valueOf(jPasswordField_1.getPassword());
+        String pass2 = String.valueOf(jPasswordField_2.getPassword());
+        
+        // checa os campos vazios
+        if (fname.trim().equals("") || uname.trim().equals("") ||
+            phone.trim().equals("") || pass1.trim().equals("") ||
+            pass2.trim().equals(""))
+        {
+            
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!", "Campos vazios", 2);
+            return false;
+            
+        }
+        
+        // checa se as senhas coincidem
+        else if(pass1.equals(pass2)){
+        
+            JOptionPane.showMessageDialog(null, "Senhas não coincidem!", "Confirme sua senha", 2);
+            return false;
+            
+        }
+        
+        // se tudo estiver ok!
+        else {
+            return true;
+        }
+        
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -542,9 +573,9 @@ public class Register_Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel_title;
     private javax.swing.JPasswordField jPasswordField_1;
+    private javax.swing.JPasswordField jPasswordField_2;
     private javax.swing.JRadioButton jRadioButton_female;
     private javax.swing.JRadioButton jRadioButton_male;
-    private javax.swing.JTextField jTextField_2;
     private javax.swing.JTextField jTextField_FullName;
     private javax.swing.JTextField jTextField_Phone;
     private javax.swing.JTextField jTextField_Username;
