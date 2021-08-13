@@ -6,6 +6,7 @@
 package login_register_design;
 
 import java.awt.Color;
+import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,6 +17,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -26,6 +29,11 @@ public class Register_Form extends javax.swing.JFrame {
     /**
      * Creates new form Register_Form
      */
+    
+    // crie uma variável para definir o caminho da imagem nela
+    String image_path = null;
+    private Object SelectImage;
+    
     public Register_Form() {
         initComponents();
         
@@ -456,6 +464,25 @@ public class Register_Form extends javax.swing.JFrame {
         
         // selecione uma imagem e defina o caminho da imagem em um jlabel
         String path = null;
+        
+        JFileChooser chooser = new JFileChooser();
+        
+        chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
+        
+        // file extension
+        FileNameExtensionFilter extension = new FileNameExtensionFilter("images", ".jpg", ".png", ".jpeg");
+        chooser.addChoosableFileFilter(extension);
+        
+        int filestate = chooser.showSaveDialog(null);
+        
+        // checa se o usuário escolheu uma imagem
+        if (filestate == JFileChooser.APPROVE_OPTION) {
+            
+            File selected = chooser.getSelectedFile();
+            path = selected.getAbsolutePath();
+            jLabel_ImagePath.setText(path);
+            
+        }
         
     }//GEN-LAST:event_jButton_SelectImageActionPerformed
 
