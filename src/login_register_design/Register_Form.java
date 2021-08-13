@@ -433,7 +433,7 @@ public class Register_Form extends javax.swing.JFrame {
             {
                 PreparedStatement ps;
                 ResultSet rs;
-                String RegisterUserQuery = "INSERT INTO `usuarios`(`full_name`, `username`, `senha`, `phone`, `gender`, `picture`) VALUES (?,?,?,?,?,?,?)";
+                String RegisterUserQuery = "INSERT INTO `usuarios`(`full_name`, `username`, `phone`, `gender`, `picture`, `senha`) VALUES (?,?,?,?,?,?)";
                 
                 try {
                     
@@ -447,8 +447,12 @@ public class Register_Form extends javax.swing.JFrame {
                     try {
                         
                         // salve a imagem como blob no banco de dados
-                        InputStream image = new FileInputStream(new File(image_path));
-                        ps.setBlob(1, image);
+                        if (image_path != null){
+                            InputStream image = new FileInputStream(new File(image_path));
+                            ps.setBlob(5, image);
+                        }else {
+                            ps.setNull(5, java.sql.Types.NULL);
+                        }
                         
                         if (ps.executeUpdate() != 0) {
                             JOptionPane.showMessageDialog(null, "Sua conta foi criada!");
@@ -565,7 +569,7 @@ public class Register_Form extends javax.swing.JFrame {
         }
         
         // checa se as senhas coincidem
-        else if(pass1.equals(pass2)){
+        else if(!pass1.equals(pass2)){
         
             JOptionPane.showMessageDialog(null, "Senhas não coincidem!", "Confirme sua senha", 2);
             return false;
