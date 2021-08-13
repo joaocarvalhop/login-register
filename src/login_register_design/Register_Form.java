@@ -7,6 +7,9 @@ package login_register_design;
 
 import java.awt.Color;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.plaf.basic.BasicBorders;
 
 /**
  *
@@ -410,7 +414,58 @@ public class Register_Form extends javax.swing.JFrame {
 
     private void jButton_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RegisterActionPerformed
 
+        String fname    = jTextField_FullName.getText();
+        String username = jTextField_Username.getText();
+        String pass1    = String.valueOf(jPasswordField_1.getPassword());
+        String pass2    = String.valueOf(jPasswordField_2.getPassword());
+        String phone    = jTextField_Phone.getText();
+        String gender   = "Male";
         
+        if (jRadioButton_female.isSelected()) {
+            
+            gender = "Female";
+            
+        }
+        
+        if (VerifyFields()) {
+        
+            if (!checkUsername(username)) 
+            {
+                PreparedStatement ps;
+                ResultSet rs;
+                String RegisterUserQuery = "INSERT INTO `usuarios`(`full_name`, `username`, `senha`, `phone`, `gender`, `picture`) VALUES (?,?,?,?,?,?,?)";
+                
+                try {
+                    
+                    ps = My_CNX.getConnection().prepareStatement(RegisterUserQuery);
+                    ps.setString(1, fname);
+                    ps.setString(2, username);
+                    ps.setString(3, phone);
+                    ps.setString(4, gender);
+                    ps.setString(6, pass1);
+                    
+                    try {
+                        
+                        // salve a imagem como blob no banco de dados
+                        InputStream image = new FileInputStream(new File(image_path));
+                        ps.setBlob(1, image);
+                        
+                        if (ps.executeUpdate() != 0) {
+                            JOptionPane.showMessageDialog(null, "Sua conta foi criada!");
+                        }else {
+                            JOptionPane.showMessageDialog(null, "Erro: Verifique suas informações");
+                        }
+                        
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
+        }
 
     }//GEN-LAST:event_jButton_RegisterActionPerformed
 
