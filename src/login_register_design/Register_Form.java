@@ -470,7 +470,7 @@ public class Register_Form extends javax.swing.JFrame {
         chooser.setCurrentDirectory(new File(System.getProperty("user.home")));
         
         // file extension
-        FileNameExtensionFilter extension = new FileNameExtensionFilter("images", ".jpg", ".png", ".jpeg");
+        FileNameExtensionFilter extension = new FileNameExtensionFilter("*.images", "jpg", "png", "jpeg");
         chooser.addChoosableFileFilter(extension);
         
         int filestate = chooser.showSaveDialog(null);
@@ -478,9 +478,11 @@ public class Register_Form extends javax.swing.JFrame {
         // checa se o usuário escolheu uma imagem
         if (filestate == JFileChooser.APPROVE_OPTION) {
             
-            File selected = chooser.getSelectedFile();
-            path = selected.getAbsolutePath();
+            File selectedImage = chooser.getSelectedFile();
+            path = selectedImage.getAbsolutePath();
             jLabel_ImagePath.setText(path);
+            
+            image_path = path;
             
         }
         
