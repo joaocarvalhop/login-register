@@ -163,6 +163,7 @@ public class Register_Form extends javax.swing.JFrame {
         jRadioButton_male.setBackground(new java.awt.Color(255, 255, 255));
         jRadioButton_male.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
         jRadioButton_male.setForeground(new java.awt.Color(0, 0, 0));
+        jRadioButton_male.setSelected(true);
         jRadioButton_male.setText("Masculino");
 
         jRadioButton_female.setBackground(new java.awt.Color(255, 255, 255));
@@ -238,7 +239,7 @@ public class Register_Form extends javax.swing.JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPasswordField_2)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,9 +276,9 @@ public class Register_Form extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jPasswordField_2, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                .addGap(22, 22, 22)
+                .addGap(33, 33, 33)
                 .addComponent(jButton_Register, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(39, 39, 39))
         );
 
         jLabel_minimize.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -316,15 +317,16 @@ public class Register_Form extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Nunito", 1, 40)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Cadastre-se");
+        jLabel3.setText("Cadastro");
 
         javax.swing.GroupLayout jPanel_titleLayout = new javax.swing.GroupLayout(jPanel_title);
         jPanel_title.setLayout(jPanel_titleLayout);
         jPanel_titleLayout.setHorizontalGroup(
             jPanel_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_titleLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(0, 46, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel_titleLayout.setVerticalGroup(
             jPanel_titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,7 +360,7 @@ public class Register_Form extends javax.swing.JFrame {
                             .addComponent(jLabel_minimize)
                             .addComponent(jLabel_close)))
                     .addComponent(jPanel_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -519,6 +521,38 @@ public class Register_Form extends javax.swing.JFrame {
         else {
             return true;
         }
+        
+    }
+    
+    // criar uma função que verifique se o username existe no banco de dados
+    public boolean checkUsername (String username){
+        
+        PreparedStatement st;
+        ResultSet rs;
+        boolean username_exist = false;
+        
+        String query = "SELECT * FROM `usuarios` WHERE `username` = ?";
+        
+        try {
+            
+            st = My_CNX.getConnection().prepareStatement(query);
+            st.setString(1, username);
+            rs = st.executeQuery();
+            
+            if (rs.next()) 
+            {
+                username_exist = true;
+                JOptionPane.showMessageDialog(null, "Este nome de usuário já está em uso, escolha outro!"
+                        , "Nome de usuário falhou", 2);
+            }
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        return username_exist;
         
     }
     
