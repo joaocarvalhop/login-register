@@ -39,6 +39,10 @@ public class Login_Form extends javax.swing.JFrame {
         jLabel_minimize.setBorder(label_border);
         jLabel_close.setBorder   (label_border);
         
+        // criar uma borda para a label de criar conta
+        Border label_create_account_border = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.gray);
+        jLabel_CreateAccount.setBorder(label_create_account_border);
+        
         // criar bordas com a cor dos parentes jpanel para os icones labels para remover o movimento.
         Border label_icons_border = BorderFactory.createMatteBorder(1, 1, 1,1, new Color(153, 153, 153));
         jLabel_username.setBorder(label_icons_border);
@@ -69,6 +73,7 @@ public class Login_Form extends javax.swing.JFrame {
         jTextField_Username = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
         jButton_login = new javax.swing.JButton();
+        jLabel_CreateAccount = new javax.swing.JLabel();
         jLabel_minimize = new javax.swing.JLabel();
         jLabel_close = new javax.swing.JLabel();
         jPanel_title = new javax.swing.JPanel();
@@ -149,13 +154,29 @@ public class Login_Form extends javax.swing.JFrame {
             }
         });
 
+        jLabel_CreateAccount.setFont(new java.awt.Font("Nunito", 0, 14)); // NOI18N
+        jLabel_CreateAccount.setForeground(new java.awt.Color(102, 0, 102));
+        jLabel_CreateAccount.setText(">> Não possui conta? Crie uma aqui!");
+        jLabel_CreateAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel_CreateAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_CreateAccountMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel_CreateAccountMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel_CreateAccountMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(42, 42, 42)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel_username, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -164,13 +185,16 @@ public class Login_Form extends javax.swing.JFrame {
                         .addComponent(jLabel_password, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(jButton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(jLabel_CreateAccount)))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField_Username)
                     .addComponent(jLabel_username, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,9 +202,11 @@ public class Login_Form extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel_password, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jButton_login, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_CreateAccount)
+                .addGap(45, 45, 45))
         );
 
         // Colocando o ícone nesse novo label
@@ -267,7 +293,7 @@ public class Login_Form extends javax.swing.JFrame {
                             .addComponent(jLabel_minimize)
                             .addComponent(jLabel_close)))
                     .addComponent(jPanel_title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(30, 30, 30)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -486,6 +512,30 @@ public class Login_Form extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel_closeMouseClicked
 
+    private void jLabel_CreateAccountMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CreateAccountMouseEntered
+        
+        Border label_border = BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(102,0,102));
+        jLabel_CreateAccount.setBorder(label_border);
+        
+    }//GEN-LAST:event_jLabel_CreateAccountMouseEntered
+
+    private void jLabel_CreateAccountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CreateAccountMouseExited
+        
+        Border label_create_account_border = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.gray);
+        jLabel_CreateAccount.setBorder(label_create_account_border);
+        
+    }//GEN-LAST:event_jLabel_CreateAccountMouseExited
+
+    private void jLabel_CreateAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CreateAccountMouseClicked
+        
+        Register_Form rf = new Register_Form();
+        rf.setVisible(true);
+        rf.pack();
+        rf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+        
+    }//GEN-LAST:event_jLabel_CreateAccountMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -524,6 +574,7 @@ public class Login_Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_login;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel_CreateAccount;
     private javax.swing.JLabel jLabel_close;
     private javax.swing.JLabel jLabel_minimize;
     private javax.swing.JLabel jLabel_password;
