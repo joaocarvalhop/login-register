@@ -456,7 +456,16 @@ public class Login_Form extends javax.swing.JFrame {
         // e a senha existem no banco de dados
         String query = "SELECT * FROM `usuarios` WHERE `username` = ? AND `senha` = ?";
         
-        try {
+        // mostrar uma mensagem caso o campo de senha ou user estejam vazios
+        if (username.trim().equals("usuário")) {
+            JOptionPane.showMessageDialog(null, "Insira seu nome de usuário", "Nome de usuário vazio", 2);
+        
+        }else if (senha.trim().equals("senha")) 
+        {
+            JOptionPane.showMessageDialog(null, "Insira sua senha", "Campo de senha vazio", 2);
+        }else {
+            
+            try {
             st = My_CNX.getConnection().prepareStatement(query);
             
             st.setString(1, username);
@@ -482,6 +491,7 @@ public class Login_Form extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Login_Form.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
         
     }//GEN-LAST:event_jButton_loginActionPerformed
 

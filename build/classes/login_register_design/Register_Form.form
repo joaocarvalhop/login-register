@@ -144,7 +144,7 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="jButton_SelectImage" min="-2" pref="160" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="jLabel_ImagePath" max="32767" attributes="0"/>
+                                                  <Component id="jLabel_ImagePath" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jTextField_Phone" pref="290" max="32767" attributes="0"/>
                                               <Group type="102" alignment="0" attributes="0">
@@ -203,7 +203,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton_SelectImage" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_ImagePath" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jLabel_ImagePath" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">

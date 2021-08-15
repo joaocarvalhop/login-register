@@ -252,7 +252,7 @@ public class Register_Form extends javax.swing.JFrame {
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jButton_SelectImage, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jLabel_ImagePath))
                                     .addComponent(jTextField_Phone, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addComponent(jRadioButton_male)
@@ -295,7 +295,7 @@ public class Register_Form extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jButton_SelectImage)
-                    .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_ImagePath, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
@@ -578,10 +578,10 @@ public class Register_Form extends javax.swing.JFrame {
 
     private void jLabel_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_loginMouseClicked
 
-        Register_Form rf = new Register_Form();
-        rf.setVisible(true);
-        rf.pack();
-        rf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Login_Form lf = new Login_Form();
+        lf.setVisible(true);
+        lf.pack();
+        lf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
 
     }//GEN-LAST:event_jLabel_loginMouseClicked
